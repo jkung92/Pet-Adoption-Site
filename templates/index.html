@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block Title %}
+Pets
+{% endblock %}
+
+{% block Content %}
+<div class="container">
+  <h1>Our Pets</h1>
+<hr>
+ {% for pet in pets %}
+  <div class="row">
+    <div class="col-sm" display="flex inline-block">
+      <figure>
+      <img src="{{pet.photo_url}}" class="img-fluid rounded figure-img" height=230px width=230px alt="Unavailable">
+      <figcaption class="figure-caption"> 
+        <a href=/{{pet.id}}>{{pet.name}}</a>
+        {% if pet.available %} 
+          <span class="font-weight-bold">
+          is available!
+        </span>
+          {% else %}
+          is already adopted.
+        {% endif %}
+      </figcaption>
+      </figure>
+    </div>
+  </div>
+  {% endfor%}
+  <hr>
+  <h2>Unavailable Pets</h2>
+  {% for pet in unavailable_pets %}
+  <div class="row">
+    <div class="col-sm">
+      <figure>
+      <img src="{{pet.photo_url}}" class="img-fluid rounded figure-img" height=230px width=230px alt="Unavailable">
+      <figcaption class="figure-caption"> 
+        <a href=/{{pet.id}}>{{pet.name}}</a>
+        {% if pet.available %} 
+          <span class="font-weight-bold">
+          is available!
+        </span>
+          {% else %}
+          is already adopted.
+        {% endif %}
+      </figcaption>
+      </figure>
+    </div>
+  </div>
+  {% endfor%}
+  <hr>
+
+  <h2>Random Petfinder Pet</h2>
+  <div class="row">
+      <div class="col-sm">
+        <figure>
+        <img src="{{random_pet.photo_url}}" class="img-fluid rounded figure-img" height=230px width=230px alt="Unavailable">
+        <figcaption class="figure-caption"> 
+          <p>{{random_pet.name}}</p>
+          <p>{{random_pet.age}}</p>
+        </figcaption>
+        </figure>
+      </div>
+    </div>
+
+
+
+</br>
+  <a href="/add" class="btn btn-primary">Add a Pet</a>
+</div> 
+{% endblock %}

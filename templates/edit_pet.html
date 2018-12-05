@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block Title %}
+Edit Pet
+{% endblock %}
+
+{% block Content %}
+<!-- CURRENT PET INFO -->
+<div class="container">
+  <h2> {{pet.name}} </h2>
+  <img src="{{pet.photo_url}}" class="img-fluid rounded figure-img" height=230px width=230px alt="Unavailable">
+  <p> Age: {{pet.age}}</p>
+  <p> Species: {{pet.species}} </p>
+</div>
+<br>
+<!-- #### EDIT FORM ##### -->
+<h1>Edit {{pet.name}}</h1>
+
+{% include 'form.html' %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <h1 class=flashes>
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+    </h1>
+  {% endif %}
+{% endwith %}
+
+{% endblock %}
